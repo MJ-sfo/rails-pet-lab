@@ -5,13 +5,11 @@ class Owner < ActiveRecord::Base
   # TODO: add association to appointments (through pets)
 
   # TODO: add validations
+  validates :first_name, presence: true, length: { maximum: 255 }
+  validates :last_name, presence: true, length: { maximum: 255 }
+  validates :email, presence: true,  uniqueness: true, length: { maximum: 255 }, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/,
+  message: " must include '@' sign" }
 
-  class Person < ApplicationRecord
-    validates :first_name, presence: true, length: { minimum: 255 }
-    validates :last_name, presence: true, length: { minimum: 255 }
-    validates :email, presence: true, length: { minimum: 255 }, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/,
-    message: "email must include '@' sign" }
-  end
 
   before_save :normalize_phone_number
 
