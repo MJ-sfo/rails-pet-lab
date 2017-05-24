@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170524032030) do
     t.string "last_name"
     t.string "email"
     t.string "phone"
+    t.string "password_digest"  #for auth test
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

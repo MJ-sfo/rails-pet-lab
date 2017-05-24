@@ -13,4 +13,7 @@ class Owner < ActiveRecord::Base
     # stretch
   end
 
+  #for passwords
+  has_secure_password
+
 end
