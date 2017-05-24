@@ -4,6 +4,7 @@
 # Destroy everything to rebuild
 Pet.destroy_all
 Owner.destroy_all
+Appointment.destroy_all
 
 # Owners
 owners_data = []
@@ -30,19 +31,30 @@ def random_date(min_days_from_now, max_days_from_now)
   (DateTime.now + rng.rand(min_days_from_now..max_days_from_now)).to_date
 end
 
-# Pets
-# def random_pet_breed
-#   ["dog", "cat", "reptile", "rabbit", "rodent", "rock", "amphibian", "giant robot", "fish"].sample
-# end
+Pets
+def random_pet_breed
+  ["dog", "cat", "reptile", "rabbit", "rodent", "rock", "amphibian", "giant robot", "fish"].sample
+end
 
-# pets_data = []
-# 6.times do
-#   pets_data << {
-#     name: FFaker::Name.first_name,
-#     breed: random_pet_breed,
-#     # date_of_birth: random_date(-2000.0, -3.0) #between 2000 and 3 days ago
-#     owner: owners.sample
-#   }
-# end
-# pets = Pet.create(pets_data)
+pets_data = []
+6.times do
+  pets_data << {
+    name: FFaker::Name.first_name,
+    breed: random_pet_breed,
+    # date_of_birth: random_date(-2000.0, -3.0) #between 2000 and 3 days ago
+    owner: owners.sample
+  }
+end
+pets = Pet.create(pets_data)
 
+# Appointments
+appointments_data = []
+6.times do
+  veterinarians_data << {
+    time: random_date,
+    reason: FFaker::HealthcareIpsum,
+    veterinarian: FFaker::Name.first_name,
+    pet: pets.sample
+  }
+end
+appointments = Appointment.create(owners_data)
