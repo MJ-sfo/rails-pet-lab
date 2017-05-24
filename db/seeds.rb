@@ -2,9 +2,9 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
 # Destroy everything to rebuild
-Pet.destroy_all
-Owner.destroy_all
 Appointment.destroy_all
+Pet.destroy_all   # destroy Pets AFTER destroy Owner, becaouse of foreign keys
+Owner.destroy_all
 
 # Owners
 owners_data = []
@@ -31,7 +31,7 @@ def random_date(min_days_from_now, max_days_from_now)
   (DateTime.now + rng.rand(min_days_from_now..max_days_from_now)).to_date
 end
 
-Pets
+# Pets
 def random_pet_breed
   ["dog", "cat", "reptile", "rabbit", "rodent", "rock", "amphibian", "giant robot", "fish"].sample
 end
@@ -48,13 +48,13 @@ end
 pets = Pet.create(pets_data)
 
 # Appointments
-appointments_data = []
+veterinarians_data = []
 6.times do
   veterinarians_data << {
-    time: random_date,
+    time: random_date(1, 100),  # window of apts
     reason: FFaker::HealthcareIpsum,
     veterinarian: FFaker::Name.first_name,
     pet: pets.sample
   }
 end
-appointments = Appointment.create(owners_data)
+appointments = Appointment.create(veterinarians_data)
