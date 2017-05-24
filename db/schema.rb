@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170524032030) do
+ActiveRecord::Schema.define(version: 20170524185834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20170524032030) do
     t.string "last_name"
     t.string "email"
     t.string "phone"
-    t.string "password_digest"  #for auth test
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
   create_table "pets", id: :serial, force: :cascade do |t|

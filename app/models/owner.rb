@@ -1,4 +1,7 @@
 class Owner < ActiveRecord::Base
+  #for passwords
+  has_secure_password
+  
   # TODO: add association ot pets
   has_many :pets
 
@@ -13,7 +16,5 @@ class Owner < ActiveRecord::Base
     # stretch
   end
 
-  #for passwords
-  has_secure_password
 
 end

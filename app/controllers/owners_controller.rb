@@ -1,6 +1,6 @@
 class OwnersController < ApplicationController
 
-  before_filter :authorize  # for auth
+  before_action :authorize , only:[:edit, :update] # for auth
 
   def index
     @owners = Owner.all
